@@ -1,0 +1,32 @@
+{
+  "name": "express-typescript",
+  "version": "1.0.0",
+  "description": "express ws socket.io v4 with typescript",
+  "main": "index.ts",
+  "scripts": {
+    "start": "nodemon index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Ashaffah/express-typescript.git"
+  },
+  "author": "Ashaffah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/Ashaffah/express-typescript/issues"
+  },
+  "homepage": "https://gitlab.com/Ashaffah/express-typescript#readme",
+  "dependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.5.9",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
