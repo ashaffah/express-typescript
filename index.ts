@@ -1,5 +1,7 @@
+import express, { Request, Response } from "express";
+import { PrismaClient } from "@prisma/client";
+import createError from "http-errors";
 import cors from "cors";
-import express from "express";
 import { Server, Socket } from "socket.io";
 
 type PollState = {
@@ -22,10 +24,25 @@ interface InterServerEvents {}
 interface SocketData {
   user: string;
 }
-const port = "5173";
 
+const port = "5173";
+const prisma = new PrismaClient();
 const app = express();
-app.use(cors({ origin: `http://localhost:3000` })); // this is the default port that Vite runs your React app on
+app.use(express.json());
+app.get("/", (req: Request, res: Response) => {
+  res.send(`
+  <div style="text-align:center">
+    <div style="font-size: 70px">WELCOME</div>
+    <div style="font-size: 40px">ASHRAF SERVICE</div>
+  </div>
+  `);
+});
+// handle 404 error
+app.use((req: Request, res: Response, next: Function) => {
+  next(createError(404));
+});
+// this is the default port that App runs your React app on
+app.use(cors({ origin: `http://localhost:3000` }));
 const server = require("http").createServer(app);
 // passing these generic type parameters to the `Server` class
 // ensures data flowing through the server are correctly typed.
@@ -118,5 +135,5 @@ io.on("connection", (socket) => {
 });
 
 server.listen(8000, () => {
-  console.log("listening on *:8000");
+  console.log("⚡️[server]: Server is running at *:8000");
 });
