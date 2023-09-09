@@ -22,9 +22,10 @@ interface InterServerEvents {}
 interface SocketData {
   user: string;
 }
+const port = "5173";
 
 const app = express();
-app.use(cors({ origin: "http://localhost:5173" })); // this is the default port that Vite runs your React app on
+app.use(cors({ origin: `http://localhost:3000` })); // this is the default port that Vite runs your React app on
 const server = require("http").createServer(app);
 // passing these generic type parameters to the `Server` class
 // ensures data flowing through the server are correctly typed.
@@ -35,7 +36,7 @@ const io = new Server<
   SocketData
 >(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: `http://localhost:3000`,
     methods: ["GET", "POST"],
   },
 });
