@@ -1,8 +1,9 @@
 import express, { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
 import createError from "http-errors";
 import cors from "cors";
 import { Server, Socket } from "socket.io";
+import examplePostRoute from "./routes/exampleRoutes";
+import userRoute from "./routes/userRoutes";
 
 type PollState = {
   question: string;
@@ -26,7 +27,6 @@ interface SocketData {
 }
 
 const port = "5173";
-const prisma = new PrismaClient();
 const app = express();
 app.use(express.json());
 app.get("/", (req: Request, res: Response) => {
@@ -37,6 +37,9 @@ app.get("/", (req: Request, res: Response) => {
   </div>
   `);
 });
+// API Group Routes
+app.use("/example", examplePostRoute);
+app.use("/user", userRoute);
 // handle 404 error
 app.use((req: Request, res: Response, next: Function) => {
   next(createError(404));
@@ -134,6 +137,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(8000, () => {
-  console.log("⚡️[server]: Server is running at *:8000");
+server.listen(process.env.PORT, () => {
+  console.log(`⚡️[server]: Server is running at *:${process.env.PORT}`);
 });
