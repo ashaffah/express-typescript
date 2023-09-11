@@ -29,7 +29,9 @@ export const exampleGetAll = async (req: Request, res: Response) => {
     const order = _order ?? "asc"; // asc atau desc
 
     const orderBy = { [sort]: order };
-    const postCount = await prisma.post.count();
+    const postCount = await prisma.post.count({
+      where: { deletedAt: null },
+    });
     const posts = await prisma.post.findMany({
       where: { deletedAt: null },
       orderBy,
@@ -150,6 +152,70 @@ export const exampleRestoreSoftDelete = async (req: Request, res: Response) => {
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ message: "Id tidak ditemukan!" });
+    } else {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+};
+
+export const exampleGetAllSoftDelete = async (req: Request, res: Response) => {
+  try {
+    const { _page, _limit, _sort, _order } = req.query;
+    const limit = +(_limit ?? 20); // per_page
+    const offset = (+(_page ?? 1) - 1) * limit; // offset
+    const sort = (_sort ?? "id").toString(); // column
+    const order = _order ?? "asc"; // asc atau desc
+
+    const orderBy = { [sort]: order };
+    const postCount = await prisma.post.count({
+      where: { deletedAt: { not: null } },
+    });
+    const posts = await prisma.post.findMany({
+      // where: { deletedAt: { not: null } }, // You can use this also!
+      where: { NOT: [{ deletedAt: null }] },
+      orderBy,
+      skip: offset,
+      take: limit,
+      include: { author: true },
+    });
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("x-total-count", postCount);
+    res.json({
+      data: posts,
+      per_page: limit,
+      page: +(_page ?? 1),
+      total_data: postCount,
+      message: "Success get all data!",
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      res.json({ message: error.message });
+    } else {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+};
+
+export const exampleGetDeletedById = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const post = await prisma.post.findUnique({
+      where: { id: Number(id), deletedAt: { not: null } },
+    });
+    if (post === null) {
+      res.json({
+        data: post,
+        message: "Cannot find data!",
+      });
+    } else {
+      res.json({
+        data: post,
+        message: "Success get data!",
+      });
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      res.json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error" });
     }
