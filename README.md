@@ -7,7 +7,7 @@ This is template express typescript with prisma orm.
 ## Feature API
 
 - [x] Get All Data
-- [x] Get Dada By Id
+- [x] Get Data By Id
 - [x] Create Data
 - [x] Update Data By Id
 - [x] Hard Delete Data
