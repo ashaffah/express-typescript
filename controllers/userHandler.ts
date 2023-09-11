@@ -10,6 +10,8 @@ export const createUser = async (req: Request, res: Response) => {
   } catch (error) {
     if (error instanceof Error) {
       res.json({ message: error.message });
+    } else {
+      res.status(500).json({ message: "Internal server error" });
     }
   }
 };
@@ -24,6 +26,8 @@ export const getUserByUsername = async (req: Request, res: Response) => {
   } catch (error) {
     if (error instanceof Error) {
       res.json({ message: error.message });
+    } else {
+      res.status(500).json({ message: "Internal server error" });
     }
   }
 };
