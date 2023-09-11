@@ -13,14 +13,14 @@ import {
 
 const router = express.Router();
 
-router.get("/post", exampleGetAll);
-router.post("/post", examplePost);
-router.get("/post/:id", exampleGetById);
-router.put("/post/:id", exampleUpdate);
-router.delete("/post/perma_delete/:id", exampleDelete);
-router.delete("/post/delete/:id", exampleSoftDelete);
-router.put("/post/restore/:id", exampleRestoreSoftDelete);
-router.get("/deleted", exampleGetAllSoftDelete);
-router.get("/deleted/:id", exampleGetDeletedById);
+router.get("/post", exampleGetAll); // Get All Data
+router.post("/post", examplePost); // Create Data
+router.get("/post/:id", exampleGetById); // Get Dada By Id
+router.put("/post/:id", exampleUpdate); // Update Data By Id
+router.delete("/post/perma_delete/:id", exampleDelete); // Hard Delete Data
+router.delete("/post/delete/:id", exampleSoftDelete); // Soft Delete Data
+router.put("/post/restore/:id", exampleRestoreSoftDelete); // Restore Data By Id
+router.get("/deleted", exampleGetAllSoftDelete); // Get All Soft Deleted
+router.get("/deleted/:id", exampleGetDeletedById); // Get Soft Deleted By Id
 
 export default router;

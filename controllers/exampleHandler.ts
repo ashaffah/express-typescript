@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import prisma from "../config/prisma";
 
+// Create Data
 export const examplePost = async (req: Request, res: Response) => {
   try {
     const { content, authorEmail } = req.body;
@@ -20,6 +21,7 @@ export const examplePost = async (req: Request, res: Response) => {
   }
 };
 
+// Get All Data
 export const exampleGetAll = async (req: Request, res: Response) => {
   try {
     const { _page, _limit, _sort, _order } = req.query;
@@ -57,6 +59,7 @@ export const exampleGetAll = async (req: Request, res: Response) => {
   }
 };
 
+// Get Dada By Id
 export const exampleGetById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -83,6 +86,7 @@ export const exampleGetById = async (req: Request, res: Response) => {
   }
 };
 
+// Update Data By Id
 export const exampleUpdate = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -102,6 +106,7 @@ export const exampleUpdate = async (req: Request, res: Response) => {
   }
 };
 
+// Hard Delete Data
 export const exampleDelete = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -118,6 +123,7 @@ export const exampleDelete = async (req: Request, res: Response) => {
   }
 };
 
+// Soft Delete Data
 export const exampleSoftDelete = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -139,6 +145,7 @@ export const exampleSoftDelete = async (req: Request, res: Response) => {
   }
 };
 
+// Restore Data By Id
 export const exampleRestoreSoftDelete = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -158,6 +165,7 @@ export const exampleRestoreSoftDelete = async (req: Request, res: Response) => {
   }
 };
 
+// Get All Soft Deleted
 export const exampleGetAllSoftDelete = async (req: Request, res: Response) => {
   try {
     const { _page, _limit, _sort, _order } = req.query;
@@ -196,6 +204,7 @@ export const exampleGetAllSoftDelete = async (req: Request, res: Response) => {
   }
 };
 
+// Get Soft Deleted By Id
 export const exampleGetDeletedById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
