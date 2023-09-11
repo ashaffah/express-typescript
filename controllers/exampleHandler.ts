@@ -59,7 +59,7 @@ export const exampleGetAll = async (req: Request, res: Response) => {
   }
 };
 
-// Get Dada By Id
+// Get Data By Id
 export const exampleGetById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
