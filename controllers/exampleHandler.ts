@@ -158,7 +158,7 @@ export const exampleRestoreAllSoftDelete = async (
     res.json({ message: "All Data Restored!" });
   } catch (error) {
     if (error instanceof Error) {
-      res.status(404).json({ message: "" });
+      res.status(404).json({ message: "Tidak Ada data!" });
     } else {
       res.status(500).json({ message: "Internal server error" });
     }
