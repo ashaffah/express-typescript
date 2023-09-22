@@ -5,27 +5,6 @@ import { Server, Socket } from "socket.io";
 import examplePostRoute from "./routes/exampleRoutes";
 import userRoute from "./routes/userRoutes";
 
-type PollState = {
-  question: string;
-  options: {
-    id: number;
-    text: string;
-    description: string;
-    votes: string[];
-  }[];
-};
-interface ClientToServerEvents {
-  vote: (optionId: number) => void;
-  askForStateUpdate: () => void;
-}
-interface ServerToClientEvents {
-  updateState: (state: PollState) => void;
-}
-interface InterServerEvents {}
-interface SocketData {
-  user: string;
-}
-
 const port = "5173";
 const app = express();
 app.use(express.json());
