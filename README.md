@@ -12,6 +12,7 @@ This is template express typescript with prisma orm.
 - [x] Update Data By Id
 - [x] Hard Delete Data
 - [x] Soft Delete Data
+- [ ] Restore All Data
 - [x] Restore Data By Id
 - [x] Get All Soft Deleted
 - [x] Get Soft Deleted By Id
