@@ -151,11 +151,15 @@ export const exampleRestoreAllSoftDelete = async (
   res: Response
 ) => {
   try {
-    await prisma.post.updateMany({
+    let data = await prisma.post.updateMany({
       where: { deletedAt: { not: null } }, // this is for multiple condition
       data: { deletedAt: null },
     });
-    res.json({ message: "All Data Restored!" });
+    if (data.count !== 0) {
+      res.json({ message: "All Data Restored!" });
+    } else {
+      res.status(404).json({ message: "Tidak Ada data!" });
+    }
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ message: "Tidak Ada data!" });
