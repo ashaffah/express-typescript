@@ -31,7 +31,7 @@ This project uses NPM or YARN as package manager.
 
 ### Requirements
 
-Node Version^16.15.0 or higher.
+Node Version^18.16.0 or higher.
 If you haven't installed node js, please visit the link below:
 
 https://nodejs.dev/en/download
@@ -64,13 +64,24 @@ Using YARN
 yarn install
 ```
 
+Using Bun
+
+```bash
+bun install
+```
+
 ### Usage
 
 Use this command to start the project
 
 ```bash
-# Running dev environment
+# Running the environment
+# Using Nodemon
 nodemon index
+# using NPM
+npm run start
+# Using Bun
+bun run start
 ```
 
 ### Used technologies
