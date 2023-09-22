@@ -4,6 +4,13 @@ import cors from "cors";
 import { Server, Socket } from "socket.io";
 import examplePostRoute from "./routes/exampleRoutes";
 import userRoute from "./routes/userRoutes";
+import type {
+  PollState,
+  ClientToServerEvents,
+  ServerToClientEvents,
+  InterServerEvents,
+  SocketData,
+} from "./types/indexType";
 
 const port = "5173";
 const app = express();

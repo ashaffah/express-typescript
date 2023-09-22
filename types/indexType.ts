@@ -22,3 +22,11 @@ type InterServerEvents = {};
 type SocketData = {
   user: string;
 };
+
+export type {
+  PollState,
+  ClientToServerEvents,
+  ServerToClientEvents,
+  InterServerEvents,
+  SocketData,
+};
