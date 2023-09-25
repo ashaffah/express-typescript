@@ -17,6 +17,10 @@ This is template express typescript with prisma orm.
 - [x] Get All Soft Deleted
 - [x] Get Soft Deleted By Id
 
+## Upcomming Tech
+
+- [tRPC](https://trpc.io/)
+
 ## Contents
 
 - [Getting started](#getting-started)
