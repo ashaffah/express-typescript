@@ -15,6 +15,8 @@ import type {
 const port = "5173";
 const app = express();
 app.use(express.json());
+// this is the default port that App runs your React app on
+app.use(cors({ origin: `http://localhost:3000` }));
 app.get("/", (req: Request, res: Response) => {
   res.send(`
   <div style="text-align:center">
@@ -30,8 +32,6 @@ app.use("/user", userRoute);
 app.use((req: Request, res: Response, next: Function) => {
   next(createError(404));
 });
-// this is the default port that App runs your React app on
-app.use(cors({ origin: `http://localhost:3000` }));
 const server = require("http").createServer(app);
 // passing these generic type parameters to the `Server` class
 // ensures data flowing through the server are correctly typed.
