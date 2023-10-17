@@ -10,21 +10,39 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int     @default(autoincrement()) @id
-  email     String  @unique
-  username  String  @unique
-  name      String?
-  posts     Post[]
+model UserTes {
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  username String    @unique
+  name     String?
+  posts    PostTes[]
 }
 
-model Post {
-  id        Int       @default(autoincrement()) @id
+model PostTes {
+  id        Int       @id @default(autoincrement())
   content   String
-  author    User?     @relation(fields: [authorId], references: [id])
+  author    UserTes?  @relation(fields: [authorId], references: [id])
   authorId  Int?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  deletedAt DateTime? 
+  deletedAt DateTime?
+}
 
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id              Int       @id @default(autoincrement())
+  email           String    @unique
+  username        String?   @unique
+  password        String
+  role            Role      @default(USER)
+  isEmailVerified Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  deletedAt       DateTime?
+  refreshToken    String?
+  accessToken     String?
 }

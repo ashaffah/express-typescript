@@ -2,8 +2,10 @@ import express, { Request, Response } from "express";
 import createError from "http-errors";
 import cors from "cors";
 import { Server, Socket } from "socket.io";
+import cookieParser from "cookie-parser";
 import examplePostRoute from "./routes/exampleRoutes";
 import userRoute from "./routes/userRoutes";
+import authRoute from "./routes/authRoutes";
 import type {
   PollState,
   ClientToServerEvents,
@@ -17,6 +19,7 @@ const app = express();
 app.use(express.json());
 // this is the default port that App runs your React app on
 app.use(cors({ origin: `http://localhost:3000` }));
+app.use(cookieParser());
 app.get("/", (req: Request, res: Response) => {
   res.send(`
   <div style="text-align:center">
@@ -28,6 +31,7 @@ app.get("/", (req: Request, res: Response) => {
 // API Group Routes
 app.use("/example", examplePostRoute);
 app.use("/user", userRoute);
+app.use("/auth", authRoute);
 // handle 404 error
 app.use((req: Request, res: Response, next: Function) => {
   next(createError(404));

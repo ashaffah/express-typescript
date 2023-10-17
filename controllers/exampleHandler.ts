@@ -5,7 +5,7 @@ import prisma from "../config/prisma";
 export const examplePost = async (req: Request, res: Response) => {
   try {
     const { content, authorEmail } = req.body;
-    await prisma.post.create({
+    await prisma.postTes.create({
       data: {
         content,
         author: { connect: { email: authorEmail } },
@@ -31,10 +31,10 @@ export const exampleGetAll = async (req: Request, res: Response) => {
     const order = _order ?? "asc"; // asc atau desc
 
     const orderBy = { [sort]: order };
-    const postCount = await prisma.post.count({
+    const postCount = await prisma.postTes.count({
       where: { deletedAt: null },
     });
-    const posts = await prisma.post.findMany({
+    const posts = await prisma.postTes.findMany({
       where: { deletedAt: null },
       orderBy,
       skip: offset,
@@ -63,7 +63,7 @@ export const exampleGetAll = async (req: Request, res: Response) => {
 export const exampleGetById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const post = await prisma.post.findUnique({
+    const post = await prisma.postTes.findUnique({
       where: { id: Number(id), deletedAt: null },
     });
     if (post === null) {
@@ -90,7 +90,7 @@ export const exampleGetById = async (req: Request, res: Response) => {
 export const exampleUpdate = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const post = await prisma.post.update({
+    const post = await prisma.postTes.update({
       where: { id: Number(id), deletedAt: null },
       data: {
         ...req.body,
@@ -110,7 +110,7 @@ export const exampleUpdate = async (req: Request, res: Response) => {
 export const exampleDelete = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    await prisma.post.delete({
+    await prisma.postTes.delete({
       where: { id: Number(id) },
     });
     res.json({ message: "Success deleted data!" });
@@ -130,7 +130,7 @@ export const exampleSoftDelete = async (req: Request, res: Response) => {
 
     const now = new Date();
 
-    await prisma.post.update({
+    await prisma.postTes.update({
       where: { id: Number(id), deletedAt: null },
       data: { deletedAt: now },
     });
@@ -151,7 +151,7 @@ export const exampleRestoreAllSoftDelete = async (
   res: Response
 ) => {
   try {
-    let data = await prisma.post.updateMany({
+    let data = await prisma.postTes.updateMany({
       where: { deletedAt: { not: null } }, // this is for multiple condition
       data: { deletedAt: null },
     });
@@ -174,7 +174,7 @@ export const exampleRestoreSoftDelete = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    await prisma.post.update({
+    await prisma.postTes.update({
       // where: { id: Number(id), deletedAt: { not: null } }, // You can use this also!
       where: { id: Number(id), NOT: [{ deletedAt: null }] }, // this is for multiple condition
       data: { deletedAt: null },
@@ -199,10 +199,10 @@ export const exampleGetAllSoftDelete = async (req: Request, res: Response) => {
     const order = _order ?? "asc"; // asc atau desc
 
     const orderBy = { [sort]: order };
-    const postCount = await prisma.post.count({
+    const postCount = await prisma.postTes.count({
       where: { deletedAt: { not: null } },
     });
-    const posts = await prisma.post.findMany({
+    const posts = await prisma.postTes.findMany({
       // where: { deletedAt: { not: null } }, // You can use this also!
       where: { NOT: [{ deletedAt: null }] },
       orderBy,
@@ -232,7 +232,7 @@ export const exampleGetAllSoftDelete = async (req: Request, res: Response) => {
 export const exampleGetDeletedById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const post = await prisma.post.findUnique({
+    const post = await prisma.postTes.findUnique({
       where: { id: Number(id), deletedAt: { not: null } },
     });
     if (post === null) {

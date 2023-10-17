@@ -3,7 +3,7 @@ import prisma from "../config/prisma";
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    await prisma.user.create({
+    await prisma.userTes.create({
       data: { ...req.body },
     });
     res.json({ message: "User Created!" });
@@ -19,7 +19,7 @@ export const createUser = async (req: Request, res: Response) => {
 export const getUserByUsername = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
-    const user = await prisma.user.findUnique({
+    const user = await prisma.userTes.findUnique({
       where: { username: String(username) },
     });
     res.json({ data: user, message: `Success get ${username} data!` });
