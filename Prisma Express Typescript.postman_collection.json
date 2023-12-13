@@ -1,304 +1,441 @@
 {
-  "info": {
-    "_postman_id": "48f51904-70f9-4f0c-bf14-b92f3ae2c0ee",
-    "name": "Prisma Express Typescript",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "11114628"
-  },
-  "item": [
-    {
-      "name": "Post",
-      "item": [
-        {
-          "name": "Get All Post",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url_8000}}/example/post?_page=1&_limit=10&_sort=id&_order=desc",
-              "host": ["{{base_url_8000}}"],
-              "path": ["example", "post"],
-              "query": [
-                {
-                  "key": "_page",
-                  "value": "1"
-                },
-                {
-                  "key": "_limit",
-                  "value": "10"
-                },
-                {
-                  "key": "_sort",
-                  "value": "id"
-                },
-                {
-                  "key": "_order",
-                  "value": "desc"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create Post",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"authorEmail\":\"example@gmail.com\",\n    \"content\":\"Hello World!\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url_8000}}/example/post",
-              "host": ["{{base_url_8000}}"],
-              "path": ["example", "post"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Post By Id",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url_8000}}/example/post/1",
-              "host": ["{{base_url_8000}}"],
-              "path": ["example", "post", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update Post",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"content\":\"Hello world, updated33\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url_8000}}/example/post/1",
-              "host": ["{{base_url_8000}}"],
-              "path": ["example", "post", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Post",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{base_url_8000}}/example/post/perma_delete/1",
-              "host": ["{{base_url_8000}}"],
-              "path": ["example", "post", "perma_delete", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Soft Delete",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{base_url_8000}}/example/post/delete/35",
-              "host": ["{{base_url_8000}}"],
-              "path": ["example", "post", "delete", "35"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Restore Data",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "url": {
-              "raw": "{{base_url_8000}}/example/post/restore/35",
-              "host": ["{{base_url_8000}}"],
-              "path": ["example", "post", "restore", "35"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Deleted",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url_8000}}/example/deleted?_page=1&_limit=10&_sort=id&_order=desc",
-              "host": ["{{base_url_8000}}"],
-              "path": ["example", "deleted"],
-              "query": [
-                {
-                  "key": "_page",
-                  "value": "1"
-                },
-                {
-                  "key": "_limit",
-                  "value": "10"
-                },
-                {
-                  "key": "_sort",
-                  "value": "id"
-                },
-                {
-                  "key": "_order",
-                  "value": "desc"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Deleted By Id",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url_8000}}/example/deleted/35",
-              "host": ["{{base_url_8000}}"],
-              "path": ["example", "deleted", "35"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Restore All Data",
-          "request": {
-            "method": "PATCH",
-            "header": [],
-            "url": {
-              "raw": "{{base_url_8000}}/example/post/restore_all",
-              "host": ["{{base_url_8000}}"],
-              "path": ["example", "post", "restore_all"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "User",
-      "item": [
-        {
-          "name": "Get User By Username",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url_8000}}/user/ashraf",
-              "host": ["{{base_url_8000}}"],
-              "path": ["user", "ashraf"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create User",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"email\": \"example@gmail.com\",\n    \"username\": \"ashraf\",\n    \"name\": \"ashraf\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url_8000}}/user/create",
-              "host": ["{{base_url_8000}}"],
-              "path": ["user", "create"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Auth",
-      "item": [
-        {
-          "name": "Register",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"username\":\"ashaffah256\",\n    \"email\":\"ashaffah@gmail.com\",\n    \"password\":\"ashaffah123\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url_8000}}/auth/register",
-              "host": ["{{base_url_8000}}"],
-              "path": ["auth", "register"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Login",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    // \"username\":\"ashaffah256\",\n    \"email\":\"ashaffah@gmail.com\",\n    \"password\":\"ashaffah123\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url_8000}}/auth/login",
-              "host": ["{{base_url_8000}}"],
-              "path": ["auth", "login"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Logout",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{base_url_8000}}/auth/logout",
-              "host": ["{{base_url_8000}}"],
-              "path": ["auth", "logout"]
-            }
-          },
-          "response": []
-        }
-      ]
-    }
-  ]
+	"info": {
+		"_postman_id": "48f51904-70f9-4f0c-bf14-b92f3ae2c0ee",
+		"name": "Prisma Express Typescript",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11114628"
+	},
+	"item": [
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Get All Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_8000}}/example/post?_page=1&_limit=10&_sort=id&_order=desc",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"example",
+								"post"
+							],
+							"query": [
+								{
+									"key": "_page",
+									"value": "1"
+								},
+								{
+									"key": "_limit",
+									"value": "10"
+								},
+								{
+									"key": "_sort",
+									"value": "id"
+								},
+								{
+									"key": "_order",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"authorEmail\":\"ashaffarafi@gmail.com\",\n    \"content\":\"Hello World!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_8000}}/example/post",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"example",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_8000}}/example/post/1",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"example",
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\":\"Hello world, updated33\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_8000}}/example/post/1",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"example",
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_8000}}/example/post/perma_delete/1",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"example",
+								"post",
+								"perma_delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Soft Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_8000}}/example/post/delete/35",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"example",
+								"post",
+								"delete",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore Data",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_8000}}/example/post/restore/35",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"example",
+								"post",
+								"restore",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Deleted",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_8000}}/example/deleted?_page=1&_limit=10&_sort=id&_order=desc",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"example",
+								"deleted"
+							],
+							"query": [
+								{
+									"key": "_page",
+									"value": "1"
+								},
+								{
+									"key": "_limit",
+									"value": "10"
+								},
+								{
+									"key": "_sort",
+									"value": "id"
+								},
+								{
+									"key": "_order",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Deleted By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_8000}}/example/deleted/35",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"example",
+								"deleted",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore All Data",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_8000}}/example/post/restore_all",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"example",
+								"post",
+								"restore_all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User By Username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_8000}}/user/ashraf",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"user",
+								"ashraf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"ashaffarafi@gmail.com\",\n    \"username\": \"ashraf\",\n    \"name\": \"rafi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_8000}}/user/create",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"rafi256\",\n    \"email\":\"ashaffarafi@gmail.com\",\n    \"password\":\"rafi123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_8000}}/auth/register",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"username\":\"rafi256\",\n    \"email\":\"ashaffarafi@gmail.com\",\n    \"password\":\"rafi123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_8000}}/auth/login",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_8000}}/auth/logout",
+							"host": [
+								"{{base_url_8000}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TRPC",
+			"item": [
+				{
+					"name": "Hello",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/trpc/getTodos",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"trpc",
+								"getTodos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": \"Dinner\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/trpc/createTodo",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"trpc",
+								"createTodo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
 }

@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import examplePostRoute from "./routes/exampleRoutes";
 import userRoute from "./routes/userRoutes";
 import authRoute from "./routes/authRoutes";
+import * as trpcExpress from "@trpc/server/adapters/express";
 import type {
   PollState,
   ClientToServerEvents,
@@ -13,6 +14,7 @@ import type {
   InterServerEvents,
   SocketData,
 } from "./types/indexType";
+import { appRouter } from "./trpc/router";
 
 const port = "5173";
 const app = express();
@@ -32,6 +34,13 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/example", examplePostRoute);
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
+app.use(
+  "/trpc",
+  trpcExpress.createExpressMiddleware({
+    router: appRouter,
+    // createContext,
+  })
+);
 // handle 404 error
 app.use((req: Request, res: Response, next: Function) => {
   next(createError(404));
