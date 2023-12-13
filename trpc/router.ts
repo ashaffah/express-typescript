@@ -2,11 +2,14 @@ import { router, procedure } from "./init";
 import { z } from "zod";
 
 type Message = {
+  id: number;
   message: string;
 };
 
+let id = 0;
+
 // sample data
-const todos: Message[] = [{ message: "Breakfast" }];
+const todos: Message[] = [{ id: ++id, message: "Breakfast" }];
 
 // Define and export router
 export const appRouter = router({
@@ -28,7 +31,7 @@ export const appRouter = router({
     // can destructure rawInput if not using validation
     .mutation(({ input }) => {
       console.log(input);
-      todos.push({ message: input!.message });
+      todos.push({ id: ++id, message: input!.message });
       return "Complete";
     }),
 });
